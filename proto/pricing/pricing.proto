@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package pricing; 
+
+service PricingService {
+  rpc GetPricing(Pricing) returns (Response) {}
+}
+
+message Pricing {
+  repeated Currency currency = 1;
+}
+
+message Currency {
+  string id = 1;
+  string name = 2;
+  string symbol = 3;
+  string cmc_rank = 4;
+  Quote quote = 5;
+}
+
+message Quote{
+    USD usd = 1;
+}
+    
+message USD{
+    double price = 1;
+}
+
+message Response {
+  Pricing pricing = 1;
+}
